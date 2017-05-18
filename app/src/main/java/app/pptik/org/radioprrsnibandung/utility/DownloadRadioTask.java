@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -48,7 +50,7 @@ public class DownloadRadioTask extends AsyncTask<String, Integer, Long> {
         if (download_size != null) {
             this.download_size = download_size;
         }
-        if (button!=null){
+        if (button != null) {
             this.button = button;
         }
         this.ctx = ctx;
@@ -65,35 +67,29 @@ public class DownloadRadioTask extends AsyncTask<String, Integer, Long> {
             int lenghtOfFile = conection.getContentLength();
             // download file
             InputStream input = new BufferedInputStream(url.openStream());
-
             //Jika tersedia memory external simpan ke memory external, jika tidak tersedia simpan ke internal
-            if (DiskSpace.externalMemoryAvailable()) {
-                path = "/sdcard/" + acara.getFileName() + "_" + acara.getTanggal() + ".mp3";
-            } else {
-                PackageManager m = ctx.getPackageManager();
-                String s = ctx.getPackageName();
-                try {
-                    PackageInfo p = m.getPackageInfo(s, 0);
-                    s = p.applicationInfo.dataDir;
-                } catch (PackageManager.NameNotFoundException e) {
-                    Log.w("yourtag", "Error Package name not found ", e);
-                }
+            File dir = null;
 
-                path = s + acara.getFileName() + "_" + acara.getTanggal() + ".mp3";
-            }
+            String extStore = System.getenv("EXTERNAL_STORAGE");
+            dir = new File(extStore + "/download");
+            dir.mkdirs();
+            path = dir.getAbsolutePath() + acara.getTanggal() + "_" + acara.getFileName();
+
             // Output stream
-            OutputStream output = new FileOutputStream(path);
+            File file = new File(dir, acara.getTanggal() + "_" + acara.getFileName());
+            if (file.exists()) file.delete();
+            OutputStream output = new FileOutputStream(file);
 
             byte data[] = new byte[1024];
 
             total = 0;
 
-            while (((count = input.read(data)) != -1) && this.isCancelled() == false && lenghtOfFile!=0) {
+            while (((count = input.read(data)) != -1) && this.isCancelled() == false && lenghtOfFile != 0) {
                 total += count;
                 int fLeft = (int) ceil((lenghtOfFile - total) / 1048576);
                 publishProgress((int) ((total * 100) / lenghtOfFile), fLeft);
                 output.write(data, 0, count);
-                Thread.sleep(5);
+                Thread.sleep(4);
                 Log.i(TAG, "IsCanceled = " + isCancelled() + " lengthoffile = " + lenghtOfFile);
             }
             // flushing output
@@ -140,7 +136,7 @@ public class DownloadRadioTask extends AsyncTask<String, Integer, Long> {
         loading.setVisibility(View.GONE);
         download_size.setVisibility(View.GONE);
         button.setImageResource(R.drawable.ic_action_download);
-        Toast.makeText(ctx,"The downloaded file has been saved in "+path+" !",Toast.LENGTH_LONG).show();
+        Toast.makeText(ctx, "The downloaded file has been saved in " + path + " !", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -151,7 +147,7 @@ public class DownloadRadioTask extends AsyncTask<String, Integer, Long> {
         button.setImageResource(R.drawable.ic_action_download);
         loading.setProgress(0);
         Toast.makeText(ctx, "Download " + acara.getNama() + " canceled!", Toast.LENGTH_SHORT).show();
-        Toast.makeText(ctx,"The downloaded file has been saved in "+path+" !",Toast.LENGTH_LONG).show();
+        Toast.makeText(ctx, "The downloaded file has been saved in " + path + " !", Toast.LENGTH_LONG).show();
     }
 
 }
