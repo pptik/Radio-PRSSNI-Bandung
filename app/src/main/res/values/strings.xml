@@ -1,0 +1,32 @@
+<resources>
+
+    <string name="app_name">Radio PRSSNI Bandung</string>
+    <string name="contentDescription">Xie Weitao</string>
+    <string name="menu_name">Radio Apps</string>
+    <string name="mail">PPTIK ITB</string>
+    <string name="radio_name">It takes a little time to load the radio. Please be patient</string>
+    <string name="loveRadio">I like</string>
+    <string name="exit_title">Quit Radio</string>
+    <string name="exit_txt">Are you sure ？</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Ok</string>
+    <string name="mini">Minimalize</string>
+    <string name="record_title">My recordings</string>
+    <string name="record_start">Start Recording</string>
+    <string name="record_stop">Stop Recording</string>
+    <string name="title_activity_podcast">Podcast</string>
+    <string name="title_activity_splash_screen">Radio Bandung</string>
+    <string name="radio_station">Radio Station</string>
+    <string name="select_radio">Select a streaming Radio Station!</string>
+    <string name="date">Select date!</string>
+    <string name="no_channel">Channel not available!</string>
+    <string name="no_sd_card">There is no SD card!</string>
+    <string name="con_timeout">Connection timeout!</string>
+    <string name="notif_stop_playlist">Stop all playlists being played or in streaming!</string>
+    <string name="notif_stop_download">Please cancel all download task first!</string>
+
+    <string name="action_settings">Setting</string>
+    <string name="title_activity_radio">RadioActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+</resources>

@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/imageBottom"
+        android:background="@drawable/bgbroadcast"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/radiosName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Radio Station's Name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/radiosAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiosName"
+        android:layout_centerHorizontal="true"
+        android:text="Address"
+        android:textAlignment="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/layoutSet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radiosAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:id="@+id/logo_radio"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_radio_station"
+            app:siBorderColor="@android:color/white"
+            app:siBorderWidth="6dp" />
+
+        <ImageView
+            android:id="@+id/logo_stasiun_radio"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_radio_station"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageBottom"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:background="#262626" />
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/profile_circular_border_imageview">
+
+        <ImageButton
+            android:id="@+id/control_play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_action_syncdata" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/listheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="About"
+        android:textColor="#EEEEEE"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/listheader"
+        android:layout_margin="20dp"
+        android:background="#80DDDDDD" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:text="Details!"
+        android:textAlignment="center"
+        android:textColor="#60FFFFFF"
+        android:textSize="14sp" />
+
+</RelativeLayout>
