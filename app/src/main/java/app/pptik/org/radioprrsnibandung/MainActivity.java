@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Movie;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @BindView(R.id.radio_list) RecyclerView recyclerView;
     @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.fab) FloatingActionButton flyingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
             }
         }));
+
+        flyingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prepareMainListRadio();
+            }
+        });
         prepareMainListRadio();
     }
 
@@ -112,12 +123,15 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     */
 
     public void prepareMainListRadio() {
+        Animation rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.infinite_rotation_2);
+        flyingBtn.startAnimation(rotateAnimation);
         RadioClient.get(getApplicationContext(), ConfigUrl.radioBroadcast, new JsonHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 stasiunRadioList.clear();
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
@@ -128,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 stasiunRadioList.clear();
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
@@ -138,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 super.onFailure(statusCode, headers, responseString, throwable);
                 stasiunRadioList.clear();
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
@@ -176,6 +192,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     e.printStackTrace();
                 }
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
             }
 
             @Override
@@ -183,11 +200,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 super.onSuccess(statusCode, headers, response);
                 stasiunRadioList.clear();
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
             }
         });
     }
 
     public void prepareMainListRadio(final String query) {
+        Animation rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.infinite_rotation_2);
+        flyingBtn.startAnimation(rotateAnimation);
         RadioClient.get(getApplicationContext(), ConfigUrl.radioBroadcast, new JsonHttpResponseHandler() {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
@@ -197,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
+                flyingBtn.clearAnimation();
             }
 
             @Override
@@ -207,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
+                flyingBtn.clearAnimation();
             }
 
             @Override
@@ -217,6 +239,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 if (throwable.getCause() instanceof ConnectTimeoutException) {
                     Toast.makeText(getApplicationContext(), R.string.con_timeout, Toast.LENGTH_LONG).show();
                 }
+                flyingBtn.clearAnimation();
             }
 
             @Override
@@ -248,6 +271,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                     e.printStackTrace();
                 }
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
             }
 
             @Override
@@ -255,6 +279,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 super.onSuccess(statusCode, headers, response);
                 stasiunRadioList.clear();
                 stasiunRadioAdapter.notifyDataSetChanged();
+                flyingBtn.clearAnimation();
             }
         });
     }

@@ -58,8 +58,11 @@ public class BroadCastFragment extends Fragment {
         holder.button_play.startAnimation(rotateAnimation);
 
         stasiunRadio = (StasiunRadio) this.getArguments().getSerializable("StasiunRadio");
-
-        holder.about.setText(stasiunRadio.getAbout());
+        if (!stasiunRadio.getAbout().equals("null")) {
+            holder.about.setText(stasiunRadio.getAbout());
+        }else {
+            holder.about.setText("");
+        }
         holder.radioAddress.setText(stasiunRadio.getAlamat());
         holder.radioName.setText(stasiunRadio.getNama());
 
