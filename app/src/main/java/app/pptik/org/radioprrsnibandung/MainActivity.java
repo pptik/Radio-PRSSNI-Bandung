@@ -105,23 +105,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return super.onCreateOptionsMenu(menu);
     }
 
-    /*
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        handleIntent(intent);
-    }
-
-
-    private void handleIntent(Intent intent) {
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            prepareMainListRadio(query);
-        }
-    }
-
-    */
-
     public void prepareMainListRadio() {
         Animation rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.infinite_rotation_2);
         flyingBtn.startAnimation(rotateAnimation);
@@ -178,8 +161,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                             acr.setFrekuensi(array.getJSONObject(i).getString("frekuensi"));
                             acr.setBand(array.getJSONObject(i).getString("band"));
                             acr.setSite_addr(array.getJSONObject(i).getString("sitea_dd"));
-                            //acr.setRadio_url(ConfigUrl.BASE_URL+ConfigUrl.streamingChannel+stRadio.getNama()+"/"+acr.getTanggal()+"/"+acr.getFileName()+".mp3");
-                            //acr.setRadio_url(ConfigUrl.BASE_URL + ConfigUrl.streamingChannel + acr.getId());
                             if (!acr.getBroadcast_path().equals(null) && !acr.getBroadcast_path().equals("") && !acr.getBroadcast_path().equals(" ")) {
                                 stasiunRadioList.add(acr);
                                 Log.i(TAG, acr.toString());
@@ -255,8 +236,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                             acr.setAlamat(array.getJSONObject(i).getString("address"));
                             acr.setBroadcast_path(array.getJSONObject(i).getString("url_stream_stereo"));
                             acr.setAbout(array.getJSONObject(i).getString("about"));
-                            //acr.setRadio_url(ConfigUrl.BASE_URL+ConfigUrl.streamingChannel+stRadio.getNama()+"/"+acr.getTanggal()+"/"+acr.getFileName()+".mp3");
-                            //acr.setRadio_url(ConfigUrl.BASE_URL + ConfigUrl.streamingChannel + acr.getId());
                             if (!acr.getBroadcast_path().equals(null) && !acr.getBroadcast_path().equals("") && !acr.getBroadcast_path().equals(" ")) {
                                 if (acr.getNama().toLowerCase().contains(query.toLowerCase())) {
                                     stasiunRadioList.add(acr);

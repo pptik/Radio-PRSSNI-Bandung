@@ -14,7 +14,7 @@ public class NetworkState {
         ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         boolean connect = netInfo != null && netInfo.isConnectedOrConnecting();
-        if (!connect) Toast.makeText(ctx, "Layanan internet tidak tersedia!", Toast.LENGTH_LONG).show();
+        if (!connect) Toast.makeText(ctx, "Internet service not available!", Toast.LENGTH_LONG).show();
         return connect;
     }
 }

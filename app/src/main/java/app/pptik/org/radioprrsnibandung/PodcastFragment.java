@@ -3,6 +3,7 @@ package app.pptik.org.radioprrsnibandung;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -127,6 +128,7 @@ public class PodcastFragment extends Fragment {
                     holder.syncIconOn();
                     mediaPlayer.reset();
                     mediaPlayer.setDataSource(getContext(), Uri.parse(selectedAcara.getRadio_url()));
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.prepareAsync();
                     holder.play_btn.startAnimation(rotateAnimation);
                 } catch (IOException e) {

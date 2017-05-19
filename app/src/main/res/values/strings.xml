@@ -1,7 +1,7 @@
 <resources>
 
-    <string name="app_name">Radio PRSSNI Bandung</string>
-    <string name="contentDescription">Xie Weitao</string>
+    <string name="app_name">RADIOPRSSNIBDG</string>
+    <string name="contentDescription">Radio Orang Bandung</string>
     <string name="menu_name">Radio Apps</string>
     <string name="mail">PPTIK ITB</string>
     <string name="radio_name">It takes a little time to load the radio. Please be patient</string>

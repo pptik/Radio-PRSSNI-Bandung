@@ -60,7 +60,7 @@ public class BroadCastFragment extends Fragment {
         stasiunRadio = (StasiunRadio) this.getArguments().getSerializable("StasiunRadio");
         if (!stasiunRadio.getAbout().equals("null")) {
             holder.about.setText(stasiunRadio.getAbout());
-        }else {
+        } else {
             holder.about.setText("");
         }
         holder.radioAddress.setText(stasiunRadio.getAlamat());
@@ -71,6 +71,7 @@ public class BroadCastFragment extends Fragment {
             Glide.with(getContext()).load(uri)
                     .bitmapTransform(new CropCircleTransformation(getContext()))
                     .fitCenter()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.logo_radio);
         }
 
@@ -78,6 +79,7 @@ public class BroadCastFragment extends Fragment {
             holder.syncIconOn();
             mediaPlayer = (new MediaPlayer());
             mediaPlayer.setDataSource(stasiunRadio.getBroadcast_path());
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.prepareAsync();
         } catch (IOException e) {
             e.printStackTrace();
