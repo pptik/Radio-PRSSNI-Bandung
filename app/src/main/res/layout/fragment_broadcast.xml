@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Radio Station's Name"
+        android:text="@string/radio_stations_name"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/radiosName"
         android:layout_centerHorizontal="true"
-        android:text="Address"
+        android:text="@string/radio_stations_address"
         android:textAlignment="center"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -93,7 +93,7 @@
         android:layout_alignTop="@+id/imageBottom"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="About"
+        android:text="@string/radio_about"
         android:textColor="#EEEEEE"
         android:textSize="18sp" />
 

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Radio Station's Name"
+        android:text="@string/radio_stations_name"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/radiosName"
         android:layout_centerHorizontal="true"
-        android:text="Podcast Play List"
+        android:text="@string/podcast_playlist"
         android:textAlignment="center"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"

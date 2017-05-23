@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">RADIOPRSSNIBDG</string>
+    <string name="app_name">Radio PRSSNI Bdg</string>
     <string name="contentDescription">Radio Orang Bandung</string>
     <string name="menu_name">Radio Apps</string>
     <string name="mail">PPTIK ITB</string>
@@ -18,13 +18,26 @@
     <string name="title_activity_splash_screen">Radio Bandung</string>
     <string name="radio_station">Radio Station</string>
     <string name="select_radio">Select a streaming Radio Station!</string>
-    <string name="date">Select date!</string>
+
     <string name="no_channel">Channel not available!</string>
     <string name="no_sd_card">There is no SD card!</string>
     <string name="con_timeout">Connection timeout!</string>
     <string name="notif_stop_playlist">Stop all playlists being played or in streaming!</string>
     <string name="notif_stop_download">Please cancel all download task first!</string>
+    <string name="internet_not_available">Internet service not available!</string>
 
+    <!--Fragment Broadcast & Podcast-->
+    <string name="radio_stations_name">Radio Station\'s Name</string>
+
+    <!--Fragment Broadcast-->
+    <string name="radio_stations_address">Address</string>
+    <string name="radio_about">About</string>
+
+    <!--Fragment Podcast-->
+    <string name="date">Select date!</string>
+    <string name="podcast_playlist">Podcast Playlist</string>
+
+    <!--Global Act-->
     <string name="action_settings">Setting</string>
     <string name="title_activity_radio">RadioActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
