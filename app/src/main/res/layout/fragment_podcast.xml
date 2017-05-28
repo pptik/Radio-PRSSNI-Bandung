@@ -82,6 +82,7 @@
         android:weightSum="5"
         android:textColor="#EEEEEE"
         android:textSize="18sp" >
+        
         <EditText
             android:id="@+id/tanggal_radio"
             android:layout_weight="1"
